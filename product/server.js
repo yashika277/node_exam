@@ -7,7 +7,10 @@ const dbConnect = require("./db/dbConnect");
 let app = express();
 
 
-
+/* --------------------------------- models --------------------------------- */
+require("./models/productModel");
+require("./models/categoryModel");
+require("./models/userModel");
 
 /* --------------------------------- cookie --------------------------------- */
 app.use(cookieParser());
@@ -25,6 +28,12 @@ app.set("view engine", "ejs");
 /* ---------------------------------- body ---------------------------------- */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+/* ---------------------------------- route ---------------------------------- */
+app.get('/', (req, res) => {
+    res.send('Hello, world!');
+  });
 
 /* ----------------------------- databse connect ---------------------------- */
 dbConnect();
